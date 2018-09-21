@@ -24,8 +24,7 @@
           <div class="col-md-12">
 
             <div class="form-group">
-              <label style="font-weight: 500; font-size: 19px; margin-bottom: 1rem">Select city to recieve update via
-                email if temperature is less than 20 <sup>0</sup> C</label>
+              <label style="font-weight: 500; font-size: 19px; margin-bottom: 1rem">Select City to add in dashboard</label>
               <ng-template #rt let-r="result" let-t="term">
                 <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
               </ng-template>
@@ -40,26 +39,6 @@
 
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <form>
-              <div class="form-group">
-                <label for="citySelect" style="font-weight: 500; font-size: 19px">Select city to view on
-                  dashboard</label>
-                <select class="form-control" id="citySelect">
-                  <option>Lagos</option>
-                  <option>Abuja</option>
-                  <option>London</option>
-                  <option>Manitoba</option>
-                  <option>Kaduna</option>
-                </select>
-              </div>
-              <button class="submit btn btn-success">Update</button>
-            </form>
-          </div>
-        </div>
-
-
       </div>
     </div>
   </div>

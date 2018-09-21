@@ -26,7 +26,7 @@ export class SignUpComponent implements OnInit {
       'firstName': [null, [Validators.required]],
       'lastName': [null, [Validators.required]],
       'email': [null, [Validators.required, Validators.email]],
-      'password': [null, [Validators.required]],
+      'password': [null, [Validators.required, Validators.min(6), Validators.max(12)]],
       'confirmPassword': [null, [Validators.required, this.confirmPassword.bind(this)]]
 
     });
