@@ -17,15 +17,15 @@ export class SignUpComponent implements OnInit {
   public showSpinner: boolean;
 
   constructor(private authenticationService: AuthenticationService,
-               private fb: FormBuilder,
-               private router: ActivatedRoute,
+              private fb: FormBuilder,
+              private router: ActivatedRoute,
               private route: Router
-              ) {
+  ) {
     this.signupForm = this.fb.group({
-      'username': [null, [Validators.required]],
-      'firstName': [null, [Validators.required]],
-      'lastName': [null, [Validators.required]],
-      'email': [null, [Validators.required, Validators.email]],
+      'username': [null, [Validators.required, Validators.max(60), this.isValidNameValidator.bind(this)]],
+      'firstName': [null, [Validators.required, Validators.max(60), this.isValidNameValidator.bind(this)]],
+      'lastName': [null, [Validators.required, Validators.max(60), this.isValidNameValidator.bind(this)]],
+      'email': [null, [Validators.required, Validators.email, this.isValidEmail.bind(this)]],
       'password': [null, [Validators.required, Validators.min(6), Validators.max(12)]],
       'confirmPassword': [null, [Validators.required, this.confirmPassword.bind(this)]]
 
@@ -51,6 +51,21 @@ export class SignUpComponent implements OnInit {
   confirmPassword(formControl: FormControl): { [s: string]: boolean } {
     if (formControl.value !== this.password) {
       return {'passwordMismatch': true};
+    }
+    return null;
+  }
+
+
+  isValidNameValidator(formControl: FormControl): { [s: string]: boolean } {
+    if (!/^[A-Za-z\s]+$/.test(formControl.value)) {
+      return {'inValidName': true};
+    }
+    return null;
+  }
+
+  isValidEmail(formControl: FormControl): { [s: string]: boolean } {
+    if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(formControl.value)) {
+      return {'inValidName': true};
     }
     return null;
   }
