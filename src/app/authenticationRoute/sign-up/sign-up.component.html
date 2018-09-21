@@ -43,7 +43,9 @@
       <input type="password" class="form-control" id="confirmPassword"
              formControlName="confirmPassword">
     </div>
-    <button type="submit" class="btn btn-raised btn-success">Register</button>
+    <p *ngIf="signupForm.get('confirmPassword').getError('passwordMismatch') && signupForm.get('password').touched" class="text-danger">Password mismatch</p>
+    <button type="submit" class="btn btn-raised btn-success"  [disabled]="signupForm.hasError">Register</button>
+    <p style="margin-top: 10px" > If you have an account you can sign in <a routerLink="/auth/login" class="text-primary">here</a></p>
   </form>
 </ng-template>
 
