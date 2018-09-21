@@ -1,0 +1,15 @@
+<div class="container cityListings">
+  <section class="mg-top-20 citi-weather-listing">
+    <div class="container">
+      <div class="row">
+        <div *ngFor="let cityDetail of cityDetails" style="margin-bottom: 10px" class="col-sm-12 col-md-4 ">
+          <div class="card">
+            <p class="text-center">{{cityDetail.city}}</p>
+            <p class="text-center"><img src="{{cityDetail.weatherIcon}}"></p>
+            <p class="text-center">{{cityDetail.temperature}} <sup>0</sup>c</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

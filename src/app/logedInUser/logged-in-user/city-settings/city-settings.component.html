@@ -1,0 +1,67 @@
+<section class="mg-top-20">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class=""></div>
+      <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 selected-cities">
+        <p>Selected Cities</p>
+        <ul id="cityListing">
+            <li style="margin-bottom: 10px" class="card" *ngFor="let city of userCities">
+              <div class="clear-fix" >
+              <div class="city-name"><p style="font-size: 25px" class="text-center">{{city.name}}</p></div>
+              <div class="btn btn-danger delete-botton" (click)="deleteCity(city.id)">Remove</div>
+              </div>
+            </li>
+        </ul>
+
+
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="form-group">
+              <label style="font-weight: 500; font-size: 19px; margin-bottom: 1rem">Select city to recieve update via
+                email if temperature is less than 20 <sup>0</sup> C</label>
+              <ng-template #rt let-r="result" let-t="term">
+                <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+              </ng-template>
+
+              <label for="typeahead-template">Search for a state:</label>
+              <input [ngClass]="{'borderError': showError}" id="typeahead-template" type="text" class="form-control" [(ngModel)]="selectedCity"
+                     [ngbTypeahead]="search" [resultTemplate]="rt"
+                     [inputFormatter]="formatter"/>
+              <hr>
+            </div>
+            <button (click)="update()" class="submit btn btn-success">Update</button>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <form>
+              <div class="form-group">
+                <label for="citySelect" style="font-weight: 500; font-size: 19px">Select city to view on
+                  dashboard</label>
+                <select class="form-control" id="citySelect">
+                  <option>Lagos</option>
+                  <option>Abuja</option>
+                  <option>London</option>
+                  <option>Manitoba</option>
+                  <option>Kaduna</option>
+                </select>
+              </div>
+              <button class="submit btn btn-success">Update</button>
+            </form>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</section>

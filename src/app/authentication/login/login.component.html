@@ -1,0 +1,20 @@
+<p class="text-center form-header"> Login</p>
+<div class="loader" *ngIf="showSpinner; else login "></div>
+<ng-template #login>
+  <form [formGroup] = "loginForm"
+        (ngSubmit) = 'loginUser()'>
+    <div class="form-group">
+      <label for="authUserName" class="bmd-label-floating">Email address</label>
+      <input type="email" class="form-control"
+             id="authUserName"
+             formControlName="username">
+      <span class="bmd-help">We'll never share your email with anyone else.</span>
+    </div>
+    <div class="form-group">
+      <label for="authPassword" class="bmd-label-floating">Password</label>
+      <input type="password" class="form-control" id="authPassword"
+             formControlName="password">
+    </div>
+    <button type="submit" class="btn btn-raised btn-success">Login</button>
+  </form>
+</ng-template>
