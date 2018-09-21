@@ -3,6 +3,7 @@
 <ng-template #login>
   <form [formGroup] = "loginForm"
         (ngSubmit) = 'loginUser()'>
+    <p class="alert alert-danger" *ngIf="loginError">User name or password does not exist</p>
     <div class="form-group">
       <label for="authUserName" class="bmd-label-floating">Username</label>
       <input type="text" class="form-control"
@@ -15,7 +16,7 @@
       <input type="password" class="form-control" id="authPassword"
              formControlName="password">
     </div>
-    <button type="submit" class="btn btn-raised btn-success">Login</button>
+    <button type="submit" class="btn btn-raised btn-success"  [disabled]="!signupForm.valid">Login</button>
     <p style="margin-top: 10px"> If you do not have an account you have to register <a routerLink="/auth/register" class="text-success" style="text-decoration: none">here</a></p>
   </form>
 </ng-template>

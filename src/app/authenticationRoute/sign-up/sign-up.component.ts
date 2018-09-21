@@ -15,6 +15,8 @@ export class SignUpComponent implements OnInit {
   public signupForm: FormGroup;
   private password: string;
   public showSpinner: boolean;
+  public signUpFormError: boolean;
+  public signupMessage: string;
 
   constructor(private authenticationService: AuthenticationService,
               private fb: FormBuilder,
@@ -79,14 +81,20 @@ export class SignUpComponent implements OnInit {
       this.showSpinner = false;
       if (response.code === '409') {
         console.log('user already exists');
+      } else {
+        this.signupMessage = response.message;
+        this.signUpFormError = true;
       }
 
       if (response.code === '200') {
         this.route.navigate(['/auth/login']);
       }
     }, error => {
-      console.log('there is an error');
+      this.signupMessage = 'Try again!!!';
     });
+
+
+    this.signupForm.reset();
 
   }
 }
