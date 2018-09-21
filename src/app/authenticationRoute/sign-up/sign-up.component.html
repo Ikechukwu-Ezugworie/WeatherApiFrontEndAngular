@@ -12,12 +12,6 @@
              formControlName="firstName">
     </div>
 
-    <div class="form-group">
-      <label for="userFirstName" class="bmd-label-floating">User Name</label>
-      <input type="text" class="form-control"
-             id="username"
-             formControlName="username">
-    </div>
 
     <div class="form-group">
       <label for="userLastName" class="bmd-label-floating">LastName</label>
@@ -25,6 +19,14 @@
              id="userLastName"
              formControlName="lastName">
     </div>
+
+    <div class="form-group">
+      <label for="userFirstName" class="bmd-label-floating">User Name</label>
+      <input type="text" class="form-control"
+             id="username"
+             formControlName="username">
+    </div>
+
     <div class="form-group">
       <label for="authUserName" class="bmd-label-floating">Email address</label>
       <input type="email" class="form-control"
@@ -44,7 +46,7 @@
              formControlName="confirmPassword">
     </div>
     <p *ngIf="signupForm.get('confirmPassword').getError('passwordMismatch') && signupForm.get('password').touched" class="text-danger">Password mismatch</p>
-    <button type="submit" class="btn btn-raised btn-success"  [disabled]="signupForm.hasError">Register</button>
+    <button type="submit" class="btn btn-raised btn-success"  [disabled]="!signupForm.valid">Register</button>
     <p style="margin-top: 10px" > If you have an account you can sign in <a routerLink="/auth/login" class="text-primary">here</a></p>
   </form>
 </ng-template>
