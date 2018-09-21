@@ -19,7 +19,7 @@ const routes: Routes = [
       {path: 'register', component: SignUpComponent}
     ]
   },
-  {path: '', redirectTo: '/weatherpadi', pathMatch: 'full'},
+  {path: '', redirectTo: '/weatherpadi', pathMatch: 'full', canActivate: [AuthGuardService]},
 
   {
     path: 'weatherpadi', component: LoggedInUserComponent, canActivate: [AuthGuardService], children: [
