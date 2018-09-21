@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
 
 
-
   ngOnInit() {
     this.loginForm = new FormGroup({
       'username': new FormControl(null, [Validators.required]),
@@ -34,10 +33,10 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(portalUser).subscribe(response => {
       this.showSpinner = false;
       if (response.code === '200') {
+        this.route.navigate(['weatherpadi/dashboard']);
         this.authenticationService.persist(response.data.loggedInUser);
       } else {
         // perform operation here
-        console.log("hello");
       }
 
     }, error1 => {
