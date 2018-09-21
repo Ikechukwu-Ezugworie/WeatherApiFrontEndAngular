@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(portalUser).subscribe(response => {
       this.showSpinner = false;
       if (response.code === '200') {
-        this.route.navigate(['weatherpadi/dashboard']);
+        this.route.navigate(['/weatherpadi/dashboard']);
         this.authenticationService.persist(response.data.loggedInUser);
       } else {
         // perform operation here
