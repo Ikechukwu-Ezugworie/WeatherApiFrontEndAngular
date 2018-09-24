@@ -5,6 +5,7 @@ import {CityService} from '../../../service/city.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SimpleUserService} from '../../../service/simple-user.service';
 import {SimpleUser} from '../../../dtos/SimpleUser';
+import {CustomValidator} from '../../../custom/CustomValidator';
 
 @Component({
   selector: 'app-usermailer',
@@ -27,7 +28,7 @@ export class UsermailerComponent implements OnInit {
 
   ngOnInit() {
     this.newUserForm = new FormGroup({
-      'fullName': new FormControl(null, [Validators.required]),
+      'fullName': new FormControl(null, [Validators.required, CustomValidator.isValidNameValidator.bind(this)]),
       'email': new FormControl(null, [Validators.required, Validators.email])
     });
     this.populateCities();
@@ -64,7 +65,7 @@ export class UsermailerComponent implements OnInit {
     user['cityId'] = this.selectedCity.id;
     user['cityName'] = this.selectedCity.name;
     this.simpleUserService.addSimpleUser(user).subscribe(response => {
-      this.simpleUsers.push(user);
+      this.simpleUsers.push(response.data);
       this.newUserForm.reset();
     });
   }
