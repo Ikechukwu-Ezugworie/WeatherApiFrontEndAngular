@@ -3,6 +3,7 @@
 <ng-template #login>
   <form [formGroup] = "loginForm"
         (ngSubmit) = 'loginUser()'>
+    <p class="alert alert-danger" *ngIf="loginError">User name or password does not exist</p>
     <div class="form-group">
       <label for="authUserName" class="bmd-label-floating">Username</label>
       <input type="email" class="form-control"

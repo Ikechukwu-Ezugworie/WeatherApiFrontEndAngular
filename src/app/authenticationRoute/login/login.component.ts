@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   public showSpinner: boolean;
   public loginForm: FormGroup;
+  public loginError: boolean;
 
 
   ngOnInit() {
@@ -31,20 +32,32 @@ export class LoginComponent implements OnInit {
     let portalUser = new PortalUser();
     portalUser = this.loginForm.value;
     this.showSpinner = true;
+    this.loginError = false;
     this.authenticationService.login(portalUser).subscribe(response => {
       this.showSpinner = false;
       if (response.code === '200') {
         this.route.navigate(['weatherpadi/dashboard']);
         this.authenticationService.persist(response.data.loggedInUser);
       } else {
-        // perform operation here
+
       }
-
     }, error1 => {
-
       this.showSpinner = false;
+      this.loginError = true;
+
     });
 
+    this.loginForm.reset();
+
   }
+
+
+  isValidNameValidator(formControl: FormControl): { [s: string]: boolean } {
+    if (!/^[A-Za-z\s]+$/.test(formControl.value)) {
+      return {'inValidName': true};
+    }
+    return null;
+  }
+
 
 }
