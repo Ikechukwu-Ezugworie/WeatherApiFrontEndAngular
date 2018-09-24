@@ -24,8 +24,8 @@ export class SimpleUserService {
   }
 
 
-  addSimpleUser(newUser: any): Observable<ApiResponse<null>> {
-    return this.http.post<ApiResponse<null>>(this.baseUrl + this.addSimpleUserUrl, newUser);
+  addSimpleUser(newUser: any): Observable<ApiResponse<SimpleUser>> {
+    return this.http.post<ApiResponse<SimpleUser>>(this.baseUrl + this.addSimpleUserUrl, newUser);
   }
 
 

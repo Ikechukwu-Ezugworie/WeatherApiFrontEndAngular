@@ -4,6 +4,7 @@ import {st} from '@angular/core/src/render3';
 import {PortalUser} from '../../dtos/PortalUser';
 import {AuthenticationService} from '../../service/authentication.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {CustomValidator} from '../../custom/CustomValidator';
 
 @Component({
   selector: 'app-sign-up',
@@ -24,9 +25,9 @@ export class SignUpComponent implements OnInit {
               private route: Router
   ) {
     this.signupForm = this.fb.group({
-      'username': [null, [Validators.required, Validators.max(60), this.isValidNameValidator.bind(this)]],
-      'firstName': [null, [Validators.required, Validators.max(60), this.isValidNameValidator.bind(this)]],
-      'lastName': [null, [Validators.required, Validators.max(60), this.isValidNameValidator.bind(this)]],
+      'username': [null, [Validators.required, Validators.max(60), CustomValidator.isValidNameValidator.bind(this)]],
+      'firstName': [null, [Validators.required, Validators.max(60), CustomValidator.isValidNameValidator.bind(this)]],
+      'lastName': [null, [Validators.required, Validators.max(60), CustomValidator.isValidNameValidator.bind(this)]],
       'email': [null, [Validators.required, Validators.email, this.isValidEmail.bind(this)]],
       'password': [null, [Validators.required, Validators.min(6), Validators.max(12)]],
       'confirmPassword': [null, [Validators.required, this.confirmPassword.bind(this)]]
@@ -58,12 +59,7 @@ export class SignUpComponent implements OnInit {
   }
 
 
-  isValidNameValidator(formControl: FormControl): { [s: string]: boolean } {
-    if (!/^[A-Za-z\s]+$/.test(formControl.value)) {
-      return {'inValidName': true};
-    }
-    return null;
-  }
+
 
   isValidEmail(formControl: FormControl): { [s: string]: boolean } {
     if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(formControl.value)) {

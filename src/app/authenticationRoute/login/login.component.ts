@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PortalUser} from '../../dtos/PortalUser';
 import {AuthenticationService} from '../../service/authentication.service';
 import {Router} from '@angular/router';
+import {CustomValidator} from '../../custom/CustomValidator';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +22,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      'username': new FormControl(null, [Validators.required, Validators.max(60), this.isValidNameValidator.bind(this)]),
-      'password': new FormControl(null, [Validators.required, Validators.max(60), this.isValidNameValidator.bind(this)])
+      'username': new FormControl(null, [Validators.required,  CustomValidator.isValidNameValidator.bind(this)]),
+      'password': new FormControl(null, [Validators.required,  Validators.max(15)]),
     });
   }
 
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(portalUser).subscribe(response => {
       this.showSpinner = false;
       if (response.code === '200') {
-        this.route.navigate(['/weatherpadi/dashboard']);
+        this.route.navigate(['weatherpadi/dashboard']);
         this.authenticationService.persist(response.data.loggedInUser);
       } else {
 
