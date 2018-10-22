@@ -4,4 +4,5 @@ export class PortalUser {
   public username: string;
   public password: string;
   public email: string;
+  public roleName: string;
 }

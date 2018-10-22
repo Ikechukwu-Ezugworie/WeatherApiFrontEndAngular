@@ -186,3 +186,29 @@ button.submit {
 .borderError{
   border-left: 4px solid rgba(253, 7, 7, 0.68);
 }
+
+.toast-container {
+  border-radius: 10px;
+  padding: 10px;
+  position: fixed;
+  top: 18px;
+  right: 12px;
+  background: #1bad20;
+  color: #ffffff;
+  width: 320px;
+  z-index: 10000000000000000000000;
+}
+
+
+.toast-container div{
+  display: inline;
+}
+
+.toast-icon {
+  padding: 5px;
+  width: 20%;
+}
+
+.toast-message {
+  width: 70%;
+}

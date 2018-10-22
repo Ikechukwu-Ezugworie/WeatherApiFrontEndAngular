@@ -1,6 +1,9 @@
 <p class="text-center form-header"> Sign Up</p>
 
 <div class="loader" *ngIf="showSpinner; else registerForm"></div>
+
+  <app-toast class="toast-container" (clicking) = "justClicked($event)" [display] = "true" [message]="'You have registered a new user. User can now log in user that user name and password'"></app-toast>
+
 <ng-template #registerForm>
   <form [formGroup]="signupForm"
         (ngSubmit)="submitForm()"

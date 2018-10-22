@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 
-import {AuthGuardService} from '../auth-guard.service';
+import {AuthGuardService} from '../guards/auth-guard.service';
 import {AuthenticationComponent} from '../authenticationRoute/authentication.component';
 import {LoginComponent} from '../authenticationRoute/login/login.component';
 import {SignUpComponent} from '../authenticationRoute/sign-up/sign-up.component';
@@ -10,6 +10,7 @@ import {LoggedInUserComponent} from '../logedInUserRoute/logged-in-user/logged-i
 import {DashboardComponent} from '../logedInUserRoute/logged-in-user/dashboard/dashboard.component';
 import {UsermailerComponent} from '../logedInUserRoute/logged-in-user/usermailer/usermailer.component';
 import {CitySettingsComponent} from '../logedInUserRoute/logged-in-user/city-settings/city-settings.component';
+import {IsAdminService} from '../guards/isAdminService';
 
 
 const routes: Routes = [
@@ -24,8 +25,8 @@ const routes: Routes = [
   {
     path: 'weatherpadi', component: LoggedInUserComponent, canActivate: [AuthGuardService], children: [
       {path: 'dashboard', component: DashboardComponent},
-      {path: 'citysettings', component: CitySettingsComponent},
-      {path: 'apimailersettings', component: UsermailerComponent}
+      {path: 'citysettings', component: CitySettingsComponent, canActivate: [IsAdminService]},
+      {path: 'apimailersettings', component: UsermailerComponent, canActivate: [IsAdminService]}
     ]
   }
 ];

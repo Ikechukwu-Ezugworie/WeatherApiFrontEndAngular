@@ -14,11 +14,11 @@
       <li class="nav-item active">
         <a class="nav-link" routerLink="/weatherpadi/dashboard" [routerLinkActive]="'active'">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" class="nav-item" *ngIf="isAdmin">
         <a class="nav-link" routerLink="/weatherpadi/citysettings" [routerLinkActive]="'active'">Cities Settings</a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isAdmin">
         <a class="nav-link" routerLink="/weatherpadi/apimailersettings" [routerLinkActive]="'active'">Weather Api Mailer</a>
       </li>
     </ul>

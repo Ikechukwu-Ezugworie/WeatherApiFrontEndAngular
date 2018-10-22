@@ -18,6 +18,7 @@ export class SignUpComponent implements OnInit {
   public showSpinner: boolean;
   public signUpFormError: boolean;
   public signupMessage: string;
+  public showSignUpSucess: boolean;
 
   constructor(private authenticationService: AuthenticationService,
               private fb: FormBuilder,
@@ -59,8 +60,6 @@ export class SignUpComponent implements OnInit {
   }
 
 
-
-
   isValidEmail(formControl: FormControl): { [s: string]: boolean } {
     if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(formControl.value)) {
       return {'inValidName': true};
@@ -93,6 +92,13 @@ export class SignUpComponent implements OnInit {
     this.signupForm.reset();
 
   }
+
+
+  justClicked(event: any) {
+    console.log(event);
+  }
+
+
 }
 
 

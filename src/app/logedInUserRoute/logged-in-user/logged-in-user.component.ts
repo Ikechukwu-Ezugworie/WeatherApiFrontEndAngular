@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./logged-in-user.component.css']
 })
 export class LoggedInUserComponent implements OnInit {
+  isAdmin: boolean;
 
   constructor(private authService: AuthenticationService, private router: Router) {
 
@@ -20,7 +21,10 @@ export class LoggedInUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.authService.getUserRole() !== 'ADMIN') {
+      this.isAdmin = false;
 
+    }
   }
 }
 

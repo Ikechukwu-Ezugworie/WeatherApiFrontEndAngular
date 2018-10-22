@@ -34,7 +34,15 @@ export class AuthenticationService {
     localStorage.clear();
     const value = JSON.stringify(valToPersist);
     localStorage.setItem('userDetails', value);
+  }
 
+
+  getUserRole() {
+    if ((this.isLoggedin())) {
+      const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+      return userDetails.roleName;
+    }
+    return null;
   }
 
 

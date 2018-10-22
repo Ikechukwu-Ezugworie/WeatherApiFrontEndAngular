@@ -14,9 +14,11 @@ import {CitySettingsComponent} from './logedInUserRoute/logged-in-user/city-sett
 import {UsermailerComponent} from './logedInUserRoute/logged-in-user/usermailer/usermailer.component';
 import {AppRouterModule} from './custom/appRouter.module';
 import {AuthenticationService} from './service/authentication.service';
-import {AuthGuardService} from './auth-guard.service';
+import {AuthGuardService} from './guards/auth-guard.service';
 import {CityService} from './service/city.service';
 import {SimpleUserService} from './service/simple-user.service';
+import {IsAdminService} from './guards/isAdminService';
+import { ToastComponent } from './toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import {SimpleUserService} from './service/simple-user.service';
     LoggedInUserComponent,
     DashboardComponent,
     CitySettingsComponent,
-    UsermailerComponent
+    UsermailerComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import {SimpleUserService} from './service/simple-user.service';
     CustomMaterialsDesignModule,
     AppRouterModule
   ],
-  providers: [AuthenticationService, AuthGuardService, CityService, SimpleUserService],
+  providers: [AuthenticationService, AuthGuardService, CityService, SimpleUserService, IsAdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
