@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class=" card col-md-4 padding_top_10">  <p class="text-center form-header"> Sign Up</p>
+
+      <br>
+<div class="loader" *ngIf="showSpinner; else registerForm"></div>
+<ng-template #registerForm>
+  <form [formGroup]="signupForm"
+        (ngSubmit)="submitForm()"
+  >
+    <div class="form-group">
+      <label for="userFirstName" class="bmd-label-floating">First Name</label>
+      <input type="text" class="form-control"
+             id="userFirstName"
+             formControlName="firstName">
+    </div>
+
+
+    <div class="form-group">
+      <label for="userLastName" class="bmd-label-floating">LastName</label>
+      <input type="text" class="form-control"
+             id="userLastName"
+             formControlName="lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="userFirstName" class="bmd-label-floating">User Name</label>
+      <input type="text" class="form-control"
+             id="username"
+             formControlName="username">
+    </div>
+
+    <div class="form-group">
+      <label for="authUserName" class="bmd-label-floating">Email address</label>
+      <input type="email" class="form-control"
+             formControlName="email" id="authUserName">
+      <span class="bmd-help">We'll never share your email with anyone else.</span>
+    </div>
+    <div class="form-group">
+      <label for="authPassword" class="bmd-label-floating">Password</label>
+      <input type="password" class="form-control"
+             formControlName="password"
+             id="authPassword">
+    </div>
+
+
+    <div class="form-group">
+      <label for="confirmPassword" class="bmd-label-floating">Confirm Password</label>
+      <input type="password" class="form-control" id="confirmPassword"
+             formControlName="confirmPassword">
+    </div>
+
+    <div class="form-group">
+      <label>Select Role</label>
+      <select id="role" class="form-control">
+        <option selected>Please Select a role</option>
+        <option> Admin</option>
+        <option> User </option>
+      </select>
+    </div>
+
+    <p *ngIf="signupForm.get('confirmPassword').getError('passwordMismatch') && signupForm.get('password').touched" class="text-danger">Password mismatch</p>
+    <button type="submit" class="btn btn-raised btn-success"  [disabled]="!signupForm.valid">Add User</button>
+<!--
+    <p style="margin-top: 10px" > If you have an account you can sign in <a routerLink="/auth/login" class="text-primary">here</a></p>
+-->
+  </form>
+</ng-template>
+
+</div>
+
+  </div>
+  <div class="col-md-4"></div>
+</div>
+

@@ -44,7 +44,7 @@ export class CitySettingsComponent implements OnInit {
   }
 
   update() {
-    if (this.selectedCity == null){
+    if (this.selectedCity == null) {
       this.showError = true;
       return;
     }

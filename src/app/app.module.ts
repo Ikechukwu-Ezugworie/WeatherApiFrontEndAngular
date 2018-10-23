@@ -17,6 +17,7 @@ import {AuthenticationService} from './service/authentication.service';
 import {AuthGuardService} from './auth-guard.service';
 import {CityService} from './service/city.service';
 import {SimpleUserService} from './service/simple-user.service';
+import {CreateUserComponent} from './logedInUserRoute/logged-in-user/create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {SimpleUserService} from './service/simple-user.service';
     LoggedInUserComponent,
     DashboardComponent,
     CitySettingsComponent,
-    UsermailerComponent
+    UsermailerComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
