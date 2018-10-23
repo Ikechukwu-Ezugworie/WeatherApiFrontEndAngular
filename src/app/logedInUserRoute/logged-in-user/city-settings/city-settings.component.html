@@ -6,7 +6,7 @@
       <div class="col-md-3"></div>
     </div>
     <div class="row">
-      <div class="col-md-6 selected-cities">
+      <div class="col-md-5 selected-cities">
         <p>Selected Cities</p>
         <ul id="cityListing">
             <li style="margin-bottom: 10px" class="card" *ngFor="let city of userCities">
@@ -19,7 +19,7 @@
 
 
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="row">
           <div class="col-md-12">
 
@@ -28,6 +28,8 @@
               <ng-template #rt let-r="result" let-t="term">
                 <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
               </ng-template>
+              <br>
+              <br>
 
               <label for="typeahead-template">Search for a state:</label>
               <input [ngClass]="{'borderError': showError}" id="typeahead-template" type="text" class="form-control" [(ngModel)]="selectedCity"
@@ -35,9 +37,23 @@
                      [inputFormatter]="formatter"/>
               <hr>
             </div>
-            <button (click)="update()" class="submit btn btn-success">Update</button>
+
+
+
+            <button (click)="update()" class="submit btn">Update</button>
 
           </div>
+
+        <!--  <div class="form-group">
+            <label>Select City to add in dashboard</label>
+            <select id="city" class="form-control" name="city"
+                    [ngModel] = 'selectedCity'>
+              <option value="">-SELECT AN OPTION-</option>
+              <option *ngFor="let city of getAllUserCity()" [value]="city">
+                {{city}}
+              </option>
+            </select>
+          </div>-->
         </div>
       </div>
     </div>
