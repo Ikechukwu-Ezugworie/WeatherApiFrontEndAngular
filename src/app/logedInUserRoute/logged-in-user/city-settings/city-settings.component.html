@@ -6,7 +6,7 @@
       <div class="col-md-3"></div>
     </div>
     <div class="row">
-      <div class="col-md-5 selected-cities">
+      <div class="col-md-6 selected-cities">
         <p>Selected Cities</p>
         <ul id="cityListing">
             <li style="margin-bottom: 10px" class="card" *ngFor="let city of userCities">
@@ -19,12 +19,12 @@
 
 
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="row">
           <div class="col-md-12">
 
             <div class="form-group">
-              <label style="font-weight: 500; font-size: 19px; margin-bottom: 1rem">Select City to add in dashboard</label>
+              <label style="font-size: 19px; margin-bottom: 1rem">Select City to add in dashboard</label>
               <ng-template #rt let-r="result" let-t="term">
                 <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
               </ng-template>

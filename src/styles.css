@@ -6,12 +6,20 @@
 body{
   font-family: 'Cormorant', serif;
   font-size: 16px;
+  font-weight: bolder !important;
+  margin: 0 auto;
 }
 
+.navbar-light{
+  font-weight: bolder;
+  color: #1bad20;
+}
 
  form .ng-invalid.ng-touched{
   border-left: 2px solid red;
-}
+   font-weight: bolder;
+
+ }
 
 .logo{
   width: 240px;
@@ -33,11 +41,13 @@ body{
 
 form label{
  color: #1bad20db !important;
+  font-weight: bolder;
+
 }
 
 .form-header {
   font-size: 36px;
-  font-weight: 500;
+  font-weight: bolder;
   color: #1bad20db !important;
 }
 
@@ -148,7 +158,7 @@ form label{
 
 .selected-cities > p{
   font-size: 19px;
-  font-weight: 500;
+  font-weight: bolder;
 }
 
 .delete-botton {
@@ -171,7 +181,14 @@ form label{
 
 button.submit {
   font-size: 14px;
+  }
+
+.btn {
+  background-color: #1bad20db !important;
+  color: white !important;
 }
+
+
 
 .cityListings .card{
   border: 1px solid rgba(35, 243, 40, 0.68);
@@ -185,4 +202,11 @@ button.submit {
 
 .borderError{
   border-left: 4px solid rgba(253, 7, 7, 0.68);
+}
+
+.background1 {
+  background-image:url("assets/sky-690293_960_720.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
 }
