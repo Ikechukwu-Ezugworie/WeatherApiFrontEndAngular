@@ -19,10 +19,10 @@ const routes: Routes = [
       {path: 'login', component: LoginComponent}
       ]
   },
-  {path: '', redirectTo: '/weatherpadi', pathMatch: 'full', /*canActivate: [AuthGuardService]*/},
+  {path: '', redirectTo: '/weatherpadi', pathMatch: 'full', canActivate: [AuthGuardService]},
 
   {
-    path: 'weatherpadi', component: LoggedInUserComponent, /*canActivate: [AuthGuardService],*/ children: [
+    path: 'weatherpadi', component: LoggedInUserComponent, canActivate: [AuthGuardService], children: [
       {path: 'dashboard', component: DashboardComponent},
       {path: 'citysettings', component: CitySettingsComponent},
       {path: 'apimailersettings', component: UsermailerComponent},

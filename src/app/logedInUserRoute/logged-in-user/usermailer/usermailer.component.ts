@@ -28,7 +28,7 @@ export class UsermailerComponent implements OnInit {
 
   ngOnInit() {
     this.newUserForm = new FormGroup({
-      'fullName': new FormControl(null, [Validators.required, CustomValidator.isValidNameValidator.bind(this)]),
+      'fullName': new FormControl(null, [Validators.required, CustomValidator.isValidFullNameValidator.bind(this)]),
       'email': new FormControl(null, [Validators.required, Validators.email])
     });
     this.populateCities();
