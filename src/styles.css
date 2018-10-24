@@ -10,6 +10,15 @@ body{
   margin: 0 auto;
 }
 
+.profile-picture{
+  max-height: 3em;
+  margin-right: 2em;
+}
+
+.image-upload > input
+{
+  display: none;
+}
 .navbar-light{
   font-weight: bolder;
   color: #1bad20;

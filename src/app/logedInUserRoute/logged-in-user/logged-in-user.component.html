@@ -28,7 +28,21 @@
     </ul>
 
     <form class="form-inline my-2 my-lg-0">
+<!--
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+-->
+      <div class="loader" *ngIf="showSpinner; else uploadImage "></div>
+      <ng-template #uploadImage>
+      <div class="image-upload ">
+        <label for="file-input">
+          <img src="../../../assets/profile-512.png" class="img-responsive profile-picture"/>
+        </label>
+
+        <input id="file-input" type="file"/>
+      </div>
+      </ng-template>
+
+
       <button class="btn btn-outline-success my-2 my-sm-0" (click)="logout()" type="button">Logout</button>
     </form>
 
