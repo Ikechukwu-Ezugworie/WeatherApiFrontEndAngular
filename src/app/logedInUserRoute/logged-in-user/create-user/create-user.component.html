@@ -1,4 +1,10 @@
-<p class="text-center form-header"> Sign Up</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <br><br><br>
+
+    <div class=" card col-md-4 padding_top_10">  <p class="text-center form-header"> Add User </p>
+
 
 <div class="loader" *ngIf="showSpinner; else registerForm"></div>
 <ng-template #registerForm>
@@ -14,7 +20,7 @@
 
 
     <div class="form-group">
-      <label for="userLastName" class="bmd-label-floating">Last Name</label>
+      <label for="userLastName" class="bmd-label-floating">LastName</label>
       <input type="text" class="form-control"
              id="userLastName"
              formControlName="lastName">
@@ -40,14 +46,33 @@
              id="authPassword">
     </div>
 
+
     <div class="form-group">
       <label for="confirmPassword" class="bmd-label-floating">Confirm Password</label>
       <input type="password" class="form-control" id="confirmPassword"
              formControlName="confirmPassword">
     </div>
+
+    <div class="form-group">
+      <label>Select Role</label>
+      <select id="role" class="form-control">
+        <option selected>Please Select a role</option>
+        <option> Admin</option>
+        <option> User </option>
+      </select>
+    </div>
+
     <p *ngIf="signupForm.get('confirmPassword').getError('passwordMismatch') && signupForm.get('password').touched" class="text-danger">Password mismatch</p>
-    <button type="submit" class="btn btn-raised btn-success"  [disabled]="!signupForm.valid">Register</button>
+    <button type="submit" class="btn btn-raised btn-success"  [disabled]="!signupForm.valid">Add User</button>
+<!--
     <p style="margin-top: 10px" > If you have an account you can sign in <a routerLink="/auth/login" class="text-primary">here</a></p>
+-->
   </form>
 </ng-template>
+
+</div>
+
+  </div>
+  <div class="col-md-4"></div>
+</div>
 

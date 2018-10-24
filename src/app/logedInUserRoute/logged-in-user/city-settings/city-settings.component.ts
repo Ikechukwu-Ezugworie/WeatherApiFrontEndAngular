@@ -43,8 +43,8 @@ export class CitySettingsComponent implements OnInit {
     this.formatter = (x: { name: string }) => x.name;
   }
 
-  update() {
-    if (this.selectedCity == null){
+  add() {
+    if (this.selectedCity == null) {
       this.showError = true;
       return;
     }

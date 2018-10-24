@@ -8,4 +8,11 @@ export class CustomValidator {
     }
     return null;
   }
+
+  static isValidFullNameValidator(formControl: FormControl): { [s: string]: boolean } {
+    if (!/^([a-zA-Z' ]+)$/.test(formControl.value)) {
+      return {'inValidName': true};
+    }
+    return null;
+  }
 }

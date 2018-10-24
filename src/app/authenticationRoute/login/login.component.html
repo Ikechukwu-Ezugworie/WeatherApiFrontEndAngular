@@ -1,3 +1,5 @@
+
+
 <p class="text-center form-header"> Login</p>
 <div class="loader" *ngIf="showSpinner; else login "></div>
 <ng-template #login>
@@ -16,7 +18,9 @@
       <input type="password" class="form-control" id="authPassword"
              formControlName="password">
     </div>
-    <button type="submit" [disabled]="!loginForm.valid" class="btn btn-raised btn-success">Login</button>
-    <p style="margin-top: 10px"> If you do not have an account you have to register <a routerLink="/auth/register" class="text-success" style="text-decoration: none">here</a></p>
+    <button type="submit" class="btn btn-raised btn-success"  [disabled]="!signupForm.valid">Login</button>
+<!--
+    <p style="margin-top: 10px"> If you do not have an account you have to register <a routerLink="/auth/register" class="text-success" style="text-decoration: none; cursor:pointer">here</a></p>
+-->
   </form>
 </ng-template>
