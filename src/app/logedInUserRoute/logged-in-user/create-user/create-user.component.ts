@@ -32,7 +32,8 @@ export class CreateUserComponent implements OnInit {
       'lastName': [null, [Validators.required, Validators.max(60), CustomValidator.isValidNameValidator.bind(this)]],
       'email': [null, [Validators.required, Validators.email, this.isValidEmail.bind(this)]],
       'password': [null, [Validators.required, Validators.min(6), Validators.max(12)]],
-      'confirmPassword': [null, [Validators.required, this.confirmPassword.bind(this)]]
+      'confirmPassword': [null, [Validators.required, this.confirmPassword.bind(this)]],
+      'roleId': [null, [Validators.required]]
 
     });
     this.showSpinner = false;

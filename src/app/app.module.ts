@@ -18,6 +18,7 @@ import {AuthGuardService} from './guards/auth-guard.service';
 import {CityService} from './service/city.service';
 import {SimpleUserService} from './service/simple-user.service';
 import {CreateUserComponent} from './logedInUserRoute/logged-in-user/create-user/create-user.component';
+import {IsAdminService} from './guards/isAdminService';
 
 @NgModule({
   declarations: [
