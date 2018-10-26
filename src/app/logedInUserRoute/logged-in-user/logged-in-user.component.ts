@@ -9,6 +9,8 @@ import {Router} from '@angular/router';
 })
 export class LoggedInUserComponent implements OnInit {
 
+  public showSpinner: boolean;
+
   constructor(private authService: AuthenticationService, private router: Router) {
 
 
