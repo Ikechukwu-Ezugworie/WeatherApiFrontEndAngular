@@ -5,6 +5,7 @@ import {ApiResponse} from '../dtos/ApiResponse';
 import {Observable} from 'rxjs';
 import {SimpleUser} from '../dtos/SimpleUser';
 import {st} from '@angular/core/src/render3';
+import {Role} from './Role';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,14 @@ export class SimpleUserService {
   private addSimpleUserUrl: string;
   private simpleUsersUrl: string;
   private deleteSimpleUserUrl: string;
+  private selectRole: string;
 
   constructor(private http: HttpClient) {
     this.baseUrl = `${environment.url}`;
     this.addSimpleUserUrl = '/user/simpleuser';
     this.simpleUsersUrl = '/user/simpleuser';
     this.deleteSimpleUserUrl = '/user/simpleuser/';
+    this.selectRole = '/roles';
   }
 
 
@@ -35,5 +38,9 @@ export class SimpleUserService {
 
   deleteUser(simpleUserId: string): Observable<ApiResponse<null>> {
     return this.http.delete<ApiResponse<null>>(this.baseUrl + this.deleteSimpleUserUrl + simpleUserId);
+  }
+
+  getSelectedRole(): Observable<ApiResponse<Role[]>> {
+    return this.http.get<ApiResponse<Role[]>>(this.baseUrl + this.selectRole);
   }
 }

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CustomValidator} from '../../../custom/CustomValidator';
 import {PortalUser} from '../../../dtos/PortalUser';
 import {AuthenticationService} from '../../../service/authentication.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SimpleUserService} from '../../../service/simple-user.service';
+import {Role} from '../../../service/Role';
 
 @Component({
   selector: 'app-create-user',
@@ -17,12 +19,13 @@ export class CreateUserComponent implements OnInit {
   public showSpinner: boolean;
   public signUpFormError: boolean;
   public signupMessage: string;
+  public roles: Role[];
 
   constructor(private authenticationService: AuthenticationService,
               private fb: FormBuilder,
               private router: ActivatedRoute,
-              private route: Router
-  ) {
+              private route: Router,
+              private simpleUserService: SimpleUserService) {
     this.signupForm = this.fb.group({
       'username': [null, [Validators.required, Validators.max(60), CustomValidator.isValidNameValidator.bind(this)]],
       'firstName': [null, [Validators.required, Validators.max(60), CustomValidator.isValidNameValidator.bind(this)]],
@@ -38,6 +41,7 @@ export class CreateUserComponent implements OnInit {
 
   ngOnInit() {
     this.passwordListener();
+    this.getRoles();
   }
 
   /**
@@ -56,8 +60,6 @@ export class CreateUserComponent implements OnInit {
     }
     return null;
   }
-
-
 
 
   isValidEmail(formControl: FormControl): { [s: string]: boolean } {
@@ -92,5 +94,12 @@ export class CreateUserComponent implements OnInit {
     this.signupForm.reset();
 
   }
+
+  getRoles() {
+    this.simpleUserService.getSelectedRole().subscribe(response => {
+      this.roles = response.data;
+    });
+  }
+
 
 }
