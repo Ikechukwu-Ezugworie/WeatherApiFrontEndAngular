@@ -17,8 +17,7 @@ import {AuthenticationService} from './service/authentication.service';
 import {AuthGuardService} from './guards/auth-guard.service';
 import {CityService} from './service/city.service';
 import {SimpleUserService} from './service/simple-user.service';
-import {IsAdminService} from './guards/isAdminService';
-import { ToastComponent } from './toast/toast.component';
+import {CreateUserComponent} from './logedInUserRoute/logged-in-user/create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,7 @@ import { ToastComponent } from './toast/toast.component';
     DashboardComponent,
     CitySettingsComponent,
     UsermailerComponent,
-    ToastComponent
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

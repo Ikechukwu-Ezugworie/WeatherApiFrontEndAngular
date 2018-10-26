@@ -24,10 +24,12 @@
           <div class="col-md-12">
 
             <div class="form-group">
-              <label style="font-weight: 500; font-size: 19px; margin-bottom: 1rem">Select City to add in dashboard</label>
+              <label style="font-size: 19px; margin-bottom: 1rem">Select City to add in dashboard</label>
               <ng-template #rt let-r="result" let-t="term">
                 <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
               </ng-template>
+              <br>
+              <br>
 
               <label for="typeahead-template">Search for a state:</label>
               <input [ngClass]="{'borderError': showError}" id="typeahead-template" type="text" class="form-control" [(ngModel)]="selectedCity"
@@ -35,9 +37,23 @@
                      [inputFormatter]="formatter"/>
               <hr>
             </div>
-            <button (click)="update()" class="submit btn btn-success">Update</button>
+
+
+
+            <button (click)="add()" class="submit btn">Add City</button>
 
           </div>
+
+        <!--  <div class="form-group">
+            <label>Select City to add in dashboard</label>
+            <select id="city" class="form-control" name="city"
+                    [ngModel] = 'selectedCity'>
+              <option value="">-SELECT AN OPTION-</option>
+              <option *ngFor="let city of getAllUserCity()" [value]="city">
+                {{city}}
+              </option>
+            </select>
+          </div>-->
         </div>
       </div>
     </div>

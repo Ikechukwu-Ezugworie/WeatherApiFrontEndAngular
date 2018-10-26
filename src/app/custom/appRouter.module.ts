@@ -10,23 +10,23 @@ import {LoggedInUserComponent} from '../logedInUserRoute/logged-in-user/logged-i
 import {DashboardComponent} from '../logedInUserRoute/logged-in-user/dashboard/dashboard.component';
 import {UsermailerComponent} from '../logedInUserRoute/logged-in-user/usermailer/usermailer.component';
 import {CitySettingsComponent} from '../logedInUserRoute/logged-in-user/city-settings/city-settings.component';
-import {IsAdminService} from '../guards/isAdminService';
+import {CreateUserComponent} from '../logedInUserRoute/logged-in-user/create-user/create-user.component';
 
 
 const routes: Routes = [
   {
     path: 'auth', component: AuthenticationComponent, children: [
-      {path: 'login', component: LoginComponent},
-      {path: 'register', component: SignUpComponent}
-    ]
+      {path: 'login', component: LoginComponent}
+      ]
   },
   {path: '', redirectTo: '/weatherpadi', pathMatch: 'full', canActivate: [AuthGuardService]},
 
   {
     path: 'weatherpadi', component: LoggedInUserComponent, canActivate: [AuthGuardService], children: [
       {path: 'dashboard', component: DashboardComponent},
-      {path: 'citysettings', component: CitySettingsComponent, canActivate: [IsAdminService]},
-      {path: 'apimailersettings', component: UsermailerComponent, canActivate: [IsAdminService]}
+      {path: 'citysettings', component: CitySettingsComponent},
+      {path: 'apimailersettings', component: UsermailerComponent},
+      {path: 'register', component: CreateUserComponent}
     ]
   }
 ];

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand" href="#">
     <div class="logo">
       <img src="../../../assets/weatherPadi.png" alt="">
@@ -11,20 +11,38 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" routerLink="/weatherpadi/dashboard" [routerLinkActive]="'active'">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item" class="nav-item" *ngIf="isAdmin">
-        <a class="nav-link" routerLink="/weatherpadi/citysettings" [routerLinkActive]="'active'">Cities Settings</a>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/weatherpadi/citysettings" [routerLinkActive]="'active'">City Settings</a>
       </li>
 
-      <li class="nav-item" *ngIf="isAdmin">
-        <a class="nav-link" routerLink="/weatherpadi/apimailersettings" [routerLinkActive]="'active'">Weather Api Mailer</a>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/weatherpadi/apimailersettings" [routerLinkActive]="'active'">Weather Mailer</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/weatherpadi/register" [routerLinkActive]="'active'">Add User</a>
       </li>
     </ul>
 
     <form class="form-inline my-2 my-lg-0">
+<!--
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+-->
+      <div class="loader" *ngIf="showSpinner; else uploadImage "></div>
+      <ng-template #uploadImage>
+      <div class="image-upload ">
+        <label for="file-input">
+          <img src="../../../assets/profile-512.png" class="img-responsive profile-picture"/>
+        </label>
+
+        <input id="file-input" type="file"/>
+      </div>
+      </ng-template>
+
+
       <button class="btn btn-outline-success my-2 my-sm-0" (click)="logout()" type="button">Logout</button>
     </form>
 

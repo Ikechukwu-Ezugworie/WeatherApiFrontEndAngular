@@ -10,6 +10,8 @@ import {Router} from '@angular/router';
 export class LoggedInUserComponent implements OnInit {
   isAdmin: boolean;
 
+  public showSpinner: boolean;
+
   constructor(private authService: AuthenticationService, private router: Router) {
 
 
