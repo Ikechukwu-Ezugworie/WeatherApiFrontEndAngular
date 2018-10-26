@@ -56,9 +56,8 @@
     <div class="form-group">
       <label>Select Role</label>
       <select id="role" class="form-control">
-        <option selected>Please Select a role</option>
-        <option> Admin</option>
-        <option> User </option>
+        <option >Please Select a role</option>
+        <option *ngFor="let role of roles" [value]="role.roleId"> {{role.name}}</option>
       </select>
     </div>
 

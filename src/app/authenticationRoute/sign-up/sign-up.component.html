@@ -6,8 +6,8 @@
 
 <ng-template #registerForm>
   <form [formGroup]="signupForm"
-        (ngSubmit)="submitForm()"
-  >
+        (ngSubmit)="submitForm()">
+
     <div class="form-group">
       <label for="userFirstName" class="bmd-label-floating">First Name</label>
       <input type="text" class="form-control"
@@ -51,6 +51,7 @@
     <p *ngIf="signupForm.get('confirmPassword').getError('passwordMismatch') && signupForm.get('password').touched" class="text-danger">Password mismatch</p>
     <button type="submit" class="btn btn-raised btn-success"  [disabled]="!signupForm.valid">Register</button>
     <p style="margin-top: 10px" > If you have an account you can sign in <a routerLink="/auth/login" class="text-primary">here</a></p>
+
   </form>
 </ng-template>
 
