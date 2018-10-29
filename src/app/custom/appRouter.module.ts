@@ -11,6 +11,7 @@ import {DashboardComponent} from '../logedInUserRoute/logged-in-user/dashboard/d
 import {UsermailerComponent} from '../logedInUserRoute/logged-in-user/usermailer/usermailer.component';
 import {CitySettingsComponent} from '../logedInUserRoute/logged-in-user/city-settings/city-settings.component';
 import {CreateUserComponent} from '../logedInUserRoute/logged-in-user/create-user/create-user.component';
+import {IsAdminService} from '../guards/isAdminService';
 
 
 const routes: Routes = [
@@ -26,7 +27,7 @@ const routes: Routes = [
       {path: 'dashboard', component: DashboardComponent},
       {path: 'citysettings', component: CitySettingsComponent},
       {path: 'apimailersettings', component: UsermailerComponent},
-      {path: 'register', component: CreateUserComponent}
+      {path: 'register', component: CreateUserComponent, canActivate: [IsAdminService ]}
     ]
   }
 ];

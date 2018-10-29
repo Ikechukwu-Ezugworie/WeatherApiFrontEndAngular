@@ -20,6 +20,8 @@ export class CreateUserComponent implements OnInit {
   public signUpFormError: boolean;
   public signupMessage: string;
   public roles: Role[];
+  public showToast: boolean;
+  public addUserMessage: string;
 
   constructor(private authenticationService: AuthenticationService,
               private fb: FormBuilder,
@@ -33,10 +35,11 @@ export class CreateUserComponent implements OnInit {
       'email': [null, [Validators.required, Validators.email, this.isValidEmail.bind(this)]],
       'password': [null, [Validators.required, Validators.min(6), Validators.max(12)]],
       'confirmPassword': [null, [Validators.required, this.confirmPassword.bind(this)]],
-      'roleId': [null, [Validators.required]]
+      'roleId': [101, [Validators.required]]
 
     });
     this.showSpinner = false;
+    this.showToast = false;
   }
 
 
@@ -85,7 +88,10 @@ export class CreateUserComponent implements OnInit {
       }
 
       if (response.code === '200') {
-        this.route.navigate(['/auth/login']);
+        this.showToast = true;
+        this.addUserMessage = 'New User has been successfuly created';
+      } else {
+        this.addUserMessage = ' User Already Exist';
       }
     }, error => {
       this.signupMessage = 'Try again!!!';
@@ -98,6 +104,7 @@ export class CreateUserComponent implements OnInit {
 
   getRoles() {
     this.simpleUserService.getSelectedRole().subscribe(response => {
+      console.log(response);
       this.roles = response.data;
     });
   }

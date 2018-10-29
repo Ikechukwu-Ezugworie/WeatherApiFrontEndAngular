@@ -7,7 +7,10 @@
 
 
 <div class="loader" *ngIf="showSpinner; else registerForm"></div>
-<ng-template #registerForm>
+
+      <app-toast class="toast-container"  [display] = "showToast" [message]="addUserMessage"></app-toast>
+
+      <ng-template #registerForm>
   <form [formGroup]="signupForm"
         (ngSubmit)="submitForm()"
   >
@@ -55,14 +58,14 @@
 
     <div class="form-group">
       <label>Select Role</label>
-      <select id="role" class="form-control" formGroupName="roleId">
+      <select id="role" class="form-control" formControlName="roleId">
         <option >Please Select a role</option>
-        <option *ngFor="let role of roles" [value]="role.roleId"> {{role.name}}</option>
+        <option *ngFor="let role of roles" [value]="role.id"> {{role.name}}</option>
       </select>
     </div>
 
     <p *ngIf="signupForm.get('confirmPassword').getError('passwordMismatch') && signupForm.get('password').touched" class="text-danger">Password mismatch</p>
-    <button type="submit" class="btn btn-raised btn-success"  [disabled]="!signupForm.valid">Add User</button>
+    <button type="submit" class="btn btn-raised btn-success"  [disabled]="!signupForm.valid" >Add User</button>
 <!--
     <p style="margin-top: 10px" > If you have an account you can sign in <a routerLink="/auth/login" class="text-primary">here</a></p>
 -->
